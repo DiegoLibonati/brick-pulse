@@ -30,35 +30,35 @@ describe("Ball Class", () => {
     expect(ball.position).toEqual({ x: 102, y: 51 });
   });
 
-  it("should change direction from (2,1) to (2,-1)", () => {
+  it("should invert X direction", () => {
     const ball = new Ball(20, { x: 100, y: 50 }, { x: 2, y: 1 });
 
-    ball.changeDirection();
-
-    expect(ball.direction).toEqual({ x: 2, y: -1 });
-  });
-
-  it("should change direction from (2,-1) to (-2,-1)", () => {
-    const ball = new Ball(20, { x: 100, y: 50 }, { x: 2, y: -1 });
-
-    ball.changeDirection();
-
-    expect(ball.direction).toEqual({ x: -2, y: -1 });
-  });
-
-  it("should change direction from (-2,-1) to (-2,1)", () => {
-    const ball = new Ball(20, { x: 100, y: 50 }, { x: -2, y: -1 });
-
-    ball.changeDirection();
+    ball.invertX();
 
     expect(ball.direction).toEqual({ x: -2, y: 1 });
   });
 
-  it("should change direction from (-2,1) to (2,1)", () => {
-    const ball = new Ball(20, { x: 100, y: 50 }, { x: -2, y: 1 });
+  it("should invert X direction when negative", () => {
+    const ball = new Ball(20, { x: 100, y: 50 }, { x: -2, y: -1 });
 
-    ball.changeDirection();
+    ball.invertX();
 
-    expect(ball.direction).toEqual({ x: 2, y: 1 });
+    expect(ball.direction).toEqual({ x: 2, y: -1 });
+  });
+
+  it("should invert Y direction", () => {
+    const ball = new Ball(20, { x: 100, y: 50 }, { x: 2, y: 1 });
+
+    ball.invertY();
+
+    expect(ball.direction).toEqual({ x: 2, y: -1 });
+  });
+
+  it("should invert Y direction when negative", () => {
+    const ball = new Ball(20, { x: 100, y: 50 }, { x: -2, y: -1 });
+
+    ball.invertY();
+
+    expect(ball.direction).toEqual({ x: -2, y: 1 });
   });
 });

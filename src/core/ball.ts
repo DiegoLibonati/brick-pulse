@@ -19,15 +19,11 @@ export class Ball {
     this.position.y += this.direction.y;
   }
 
-  changeDirection(): void {
-    if (this.direction.x === 2 && this.direction.y === 1) {
-      this.direction.y = -1;
-    } else if (this.direction.x === 2 && this.direction.y === -1) {
-      this.direction.x = -2;
-    } else if (this.direction.x === -2 && this.direction.y === -1) {
-      this.direction.y = 1;
-    } else if (this.direction.x === -2 && this.direction.y === 1) {
-      this.direction.x = 2;
-    }
+  invertX(): void {
+    this.direction.x = -this.direction.x;
+  }
+
+  invertY(): void {
+    this.direction.y = -this.direction.y;
   }
 }

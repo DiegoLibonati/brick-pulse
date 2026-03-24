@@ -26,16 +26,17 @@ import "@/pages/BreakoutPage/BreakoutPage.css";
 export const BreakoutPage = (): Page => {
   const main = document.createElement("main") as Page;
   main.className = "breakout-page";
+  main.setAttribute("aria-label", "Breakout Game");
 
   main.innerHTML = `
-    <section class="game">
-      <div class="game__header">
+    <section class="game" aria-label="Game area">
+      <div class="game__header" role="status" aria-label="Score display">
         <p class="game__score">
-          Score: <span id="counter" class="game__score-count">0</span>
+          Score: <span id="counter" class="game__score-count" aria-live="polite">0</span>
         </p>
       </div>
 
-      <div class="game__blocks"></div>
+      <div class="game__blocks" role="region" aria-label="Game board"></div>
     </section>
   `;
 
@@ -92,12 +93,11 @@ export const BreakoutPage = (): Page => {
       main.querySelector<HTMLSpanElement>(".game__score-count");
 
     // walls
-    if (
-      ball.position.x >= widthBoard - ball.diameter ||
-      ball.position.y >= heightBoard - ball.diameter ||
-      ball.position.x <= 0
-    ) {
-      ball.changeDirection();
+    if (ball.position.x >= widthBoard - ball.diameter || ball.position.x <= 0) {
+      ball.invertX();
+    }
+    if (ball.position.y >= heightBoard - ball.diameter) {
+      ball.invertY();
     }
 
     // user
@@ -107,7 +107,7 @@ export const BreakoutPage = (): Page => {
       ball.position.y > user.position.y &&
       ball.position.y < user.position.y + heightBlock
     ) {
-      ball.changeDirection();
+      ball.invertY();
     }
 
     // win or game over
@@ -136,7 +136,7 @@ export const BreakoutPage = (): Page => {
         );
         allBlocks[i]?.classList.remove("block");
         blocks.splice(i, 1);
-        ball.changeDirection();
+        ball.invertY();
         score++;
 
         if (countElement) {

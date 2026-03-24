@@ -14,26 +14,26 @@
 
 .game__header {
   position: relative;
-  top: -20rem;
-  letter-spacing: 0.1rem;
-  margin: 1rem;
+  top: -12.5rem;
+  letter-spacing: 0.0625rem;
+  margin: 0.625rem;
 }
 
 .game__score {
-  font-size: 3rem;
+  font-size: 1.875rem;
   color: var(--color-white);
 }
 
 .game__score-count {
-  font-size: 3rem;
+  font-size: 1.875rem;
   color: var(--color-white);
 }
 
 .game__blocks {
   position: absolute;
-  width: 60rem;
-  height: 30rem;
-  border: 0.1rem solid var(--color-black);
-  margin: 1rem;
+  width: 37.5rem;
+  height: 18.75rem;
+  border: 0.0625rem solid var(--color-black);
+  margin: 0.625rem;
   background: var(--color-secondary);
 }

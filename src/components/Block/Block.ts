@@ -6,6 +6,8 @@ import "@/components/Block/Block.css";
 export const Block = ({ x, y }: BlockProps): BlockComponent => {
   const divRoot = document.createElement("div");
   divRoot.className = "block";
+  divRoot.setAttribute("role", "img");
+  divRoot.setAttribute("aria-label", "Block");
 
   divRoot.style.left = `${x}px`;
   divRoot.style.bottom = `${y}px`;

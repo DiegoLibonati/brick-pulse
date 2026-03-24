@@ -6,6 +6,8 @@ import "@/components/Ball/Ball.css";
 export const Ball = ({ x, y }: BallProps): BallComponent => {
   const divRoot = document.createElement("div");
   divRoot.className = "ball";
+  divRoot.setAttribute("role", "img");
+  divRoot.setAttribute("aria-label", "Ball");
 
   divRoot.style.left = `${x}px`;
   divRoot.style.bottom = `${y}px`;
