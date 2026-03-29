@@ -1,7 +1,7 @@
 import type { BlockProps } from "@/types/props";
 import type { BlockComponent } from "@/types/components";
 
-import { Block } from "@/components/Block/Block";
+import Block from "@/components/Block/Block";
 
 const renderComponent = (props: BlockProps): BlockComponent => {
   const container = Block(props);

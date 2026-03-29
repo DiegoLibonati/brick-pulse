@@ -1,6 +1,6 @@
 import type { Page } from "@/types/pages";
 
-import { BreakoutPage } from "@/pages/BreakoutPage/BreakoutPage";
+import BreakoutPage from "@/pages/BreakoutPage/BreakoutPage";
 
 const renderPage = (): Page => {
   const container = BreakoutPage();

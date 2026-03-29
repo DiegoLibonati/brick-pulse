@@ -3,7 +3,7 @@ import type { BallComponent } from "@/types/components";
 
 import "@/components/Ball/Ball.css";
 
-export const Ball = ({ x, y }: BallProps): BallComponent => {
+const Ball = ({ x, y }: BallProps): BallComponent => {
   const divRoot = document.createElement("div");
   divRoot.className = "ball";
   divRoot.setAttribute("role", "img");
@@ -14,3 +14,5 @@ export const Ball = ({ x, y }: BallProps): BallComponent => {
 
   return divRoot;
 };
+
+export default Ball;

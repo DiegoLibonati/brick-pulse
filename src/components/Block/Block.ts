@@ -3,7 +3,7 @@ import type { BlockComponent } from "@/types/components";
 
 import "@/components/Block/Block.css";
 
-export const Block = ({ x, y }: BlockProps): BlockComponent => {
+const Block = ({ x, y }: BlockProps): BlockComponent => {
   const divRoot = document.createElement("div");
   divRoot.className = "block";
   divRoot.setAttribute("role", "img");
@@ -14,3 +14,5 @@ export const Block = ({ x, y }: BlockProps): BlockComponent => {
 
   return divRoot;
 };
+
+export default Block;

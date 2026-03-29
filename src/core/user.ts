@@ -1,7 +1,7 @@
 import type { Coords, MoveKeys } from "@/types/app";
 import type { UserComponent as UserComponentT } from "@/types/components";
 
-import { User as UserComponent } from "@/components/User/User";
+import UserComponent from "@/components/User/User";
 
 export class User {
   constructor(public position: Coords) {}

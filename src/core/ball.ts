@@ -1,7 +1,7 @@
 import type { Coords } from "@/types/app";
 import type { BallComponent as BallComponentT } from "@/types/components";
 
-import { Ball as BallComponent } from "@/components/Ball/Ball";
+import BallComponent from "@/components/Ball/Ball";
 
 export class Ball {
   constructor(

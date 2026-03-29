@@ -3,7 +3,7 @@ import type { UserComponent } from "@/types/components";
 
 import "@/components/User/User.css";
 
-export const User = ({ x, y }: UserProps): UserComponent => {
+const User = ({ x, y }: UserProps): UserComponent => {
   const divRoot = document.createElement("div");
   divRoot.className = "user";
   divRoot.setAttribute("role", "img");
@@ -14,3 +14,5 @@ export const User = ({ x, y }: UserProps): UserComponent => {
 
   return divRoot;
 };
+
+export default User;

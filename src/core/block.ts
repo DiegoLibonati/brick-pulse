@@ -1,7 +1,7 @@
 import type { Coords, Sizes } from "@/types/app";
 import type { BlockComponent as BlockComponentT } from "@/types/components";
 
-import { Block as BlockComponent } from "@/components/Block/Block";
+import BlockComponent from "@/components/Block/Block";
 
 export class Block {
   public bottomLeft: Coords;

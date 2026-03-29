@@ -23,7 +23,7 @@ import {
 
 import "@/pages/BreakoutPage/BreakoutPage.css";
 
-export const BreakoutPage = (): Page => {
+const BreakoutPage = (): Page => {
   const main = document.createElement("main") as Page;
   main.className = "breakout-page";
   main.setAttribute("aria-label", "Breakout Game");
@@ -197,3 +197,5 @@ export const BreakoutPage = (): Page => {
 
   return main;
 };
+
+export default BreakoutPage;

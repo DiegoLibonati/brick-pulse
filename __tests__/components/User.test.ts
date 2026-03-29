@@ -1,7 +1,7 @@
 import type { UserProps } from "@/types/props";
 import type { UserComponent } from "@/types/components";
 
-import { User } from "@/components/User/User";
+import User from "@/components/User/User";
 
 const renderComponent = (props: UserProps): UserComponent => {
   const container = User(props);

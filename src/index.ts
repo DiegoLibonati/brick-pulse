@@ -1,5 +1,5 @@
 import "@/index.css";
-import { BreakoutPage } from "@/pages/BreakoutPage/BreakoutPage";
+import BreakoutPage from "@/pages/BreakoutPage/BreakoutPage";
 
 const onInit = (): void => {
   const app = document.querySelector<HTMLDivElement>("#app");

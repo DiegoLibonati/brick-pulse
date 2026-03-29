@@ -1,7 +1,7 @@
 import type { BallProps } from "@/types/props";
 import type { BallComponent } from "@/types/components";
 
-import { Ball } from "@/components/Ball/Ball";
+import Ball from "@/components/Ball/Ball";
 
 const renderComponent = (props: BallProps): BallComponent => {
   const container = Ball(props);
