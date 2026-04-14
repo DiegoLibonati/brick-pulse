@@ -1,4 +1,4 @@
-# Breakout Game
+# BrickPulse
 
 ## Educational Purpose
 
@@ -17,7 +17,13 @@ The application will open automatically at `http://localhost:3000`
 
 ## Description
 
-I made the game Breakout, in which we must use a platform to move to the sides to hit the ball and in this way the ball hits the blocks. Once we knock down all the blocks we win, if the ball hits the bottom we lose. The controls are the left and right arrows.
+**BrickPulse** is a browser-based implementation of the classic Breakout arcade game, built entirely with vanilla TypeScript and no production dependencies. The player controls a horizontal paddle at the bottom of the game board using the left and right arrow keys. A ball bounces continuously across the board, and the objective is to use the paddle to keep the ball in play while it collides with and destroys a grid of 18 blocks arranged in three rows at the top of the board.
+
+Each block destroyed adds one point to the score. The game ends in a win when all blocks have been cleared from the board, or in a loss when the ball falls past the paddle and reaches the bottom edge. The final score is displayed at the end of each match.
+
+The project is structured around a three-layer architecture: pure game logic classes in the core layer (ball physics, block geometry, paddle movement), stateless DOM factory functions in the component layer, and a single page that orchestrates the game loop, collision detection, scoring, and keyboard input. The game loop runs at a fixed interval of 10ms, providing smooth and consistent movement regardless of frame rate.
+
+The codebase follows strict TypeScript configuration with full type safety, and is covered by a suite of unit and integration tests using Jest and Testing Library, ensuring correctness of game mechanics, rendering, user interaction, and cleanup behavior.
 
 ## IMPORTANT
 
@@ -63,7 +69,7 @@ No production dependencies - Pure Vanilla TypeScript
 
 ## Portfolio Link
 
-[`https://www.diegolibonati.com.ar/#/project/Breakout-Game`](https://www.diegolibonati.com.ar/#/project/Breakout-Game)
+[`https://www.diegolibonati.com.ar/#/project/brick-pulse`](https://www.diegolibonati.com.ar/#/project/brick-pulse)
 
 ## Video
 

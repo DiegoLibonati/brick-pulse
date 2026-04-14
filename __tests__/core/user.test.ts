@@ -1,48 +1,92 @@
 import { User } from "@/core/user";
 
-describe("User Class", () => {
-  it("should initialize with correct position", () => {
-    const user = new User({ x: 230, y: 10 });
-
-    expect(user.position).toEqual({ x: 230, y: 10 });
-  });
-
-  it("should create user component", () => {
-    const user = new User({ x: 230, y: 10 });
-
-    const component = user.create();
-    document.body.appendChild(component);
-
-    expect(component).toHaveClass("user");
-    expect(component.style.left).toBe("230px");
-    expect(component.style.bottom).toBe("10px");
-
+describe("User", () => {
+  afterEach(() => {
     document.body.innerHTML = "";
   });
 
-  it("should move left when ArrowLeft is pressed", () => {
-    const user = new User({ x: 230, y: 10 });
+  describe("constructor", () => {
+    it("should initialize with given position", () => {
+      const user = new User({ x: 250, y: 0 });
 
-    user.move("ArrowLeft");
-
-    expect(user.position).toEqual({ x: 220, y: 10 });
+      expect(user.position).toEqual({ x: 250, y: 0 });
+    });
   });
 
-  it("should move right when ArrowRight is pressed", () => {
-    const user = new User({ x: 230, y: 10 });
+  describe("move", () => {
+    it("should decrease x by 10 on ArrowLeft", () => {
+      const user = new User({ x: 250, y: 0 });
 
-    user.move("ArrowRight");
+      user.move("ArrowLeft");
 
-    expect(user.position).toEqual({ x: 240, y: 10 });
+      expect(user.position.x).toBe(240);
+    });
+
+    it("should increase x by 10 on ArrowRight", () => {
+      const user = new User({ x: 250, y: 0 });
+
+      user.move("ArrowRight");
+
+      expect(user.position.x).toBe(260);
+    });
+
+    it("should not change y on ArrowLeft", () => {
+      const user = new User({ x: 250, y: 0 });
+
+      user.move("ArrowLeft");
+
+      expect(user.position.y).toBe(0);
+    });
+
+    it("should not change y on ArrowRight", () => {
+      const user = new User({ x: 250, y: 0 });
+
+      user.move("ArrowRight");
+
+      expect(user.position.y).toBe(0);
+    });
+
+    it("should accumulate position over multiple left moves", () => {
+      const user = new User({ x: 250, y: 0 });
+
+      user.move("ArrowLeft");
+      user.move("ArrowLeft");
+      user.move("ArrowLeft");
+
+      expect(user.position.x).toBe(220);
+    });
+
+    it("should accumulate position over multiple right moves", () => {
+      const user = new User({ x: 250, y: 0 });
+
+      user.move("ArrowRight");
+      user.move("ArrowRight");
+
+      expect(user.position.x).toBe(270);
+    });
   });
 
-  it("should move multiple times", () => {
-    const user = new User({ x: 230, y: 10 });
+  describe("create", () => {
+    it("should return a div element with class user", () => {
+      const user = new User({ x: 250, y: 0 });
+      const element = user.create();
+      document.body.appendChild(element);
 
-    user.move("ArrowLeft");
-    user.move("ArrowLeft");
-    user.move("ArrowRight");
+      expect(element).toHaveClass("user");
+    });
 
-    expect(user.position).toEqual({ x: 220, y: 10 });
+    it("should set left style from position.x", () => {
+      const user = new User({ x: 100, y: 0 });
+      const element = user.create();
+
+      expect(element.style.left).toBe("100px");
+    });
+
+    it("should set bottom style from position.y", () => {
+      const user = new User({ x: 250, y: 50 });
+      const element = user.create();
+
+      expect(element.style.bottom).toBe("50px");
+    });
   });
 });

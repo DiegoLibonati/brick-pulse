@@ -21,12 +21,12 @@ import {
   widthBoard,
 } from "@/constants/vars";
 
-import "@/pages/BreakoutPage/BreakoutPage.css";
+import "@/pages/BrickPulsePage/BrickPulsePage.css";
 
-const BreakoutPage = (): Page => {
+const BrickPulsePage = (): Page => {
   const main = document.createElement("main") as Page;
-  main.className = "breakout-page";
-  main.setAttribute("aria-label", "Breakout Game");
+  main.className = "brick-pulse-page";
+  main.setAttribute("aria-label", "BrickPulse");
 
   main.innerHTML = `
     <section class="game" aria-label="Game area">
@@ -198,4 +198,4 @@ const BreakoutPage = (): Page => {
   return main;
 };
 
-export default BreakoutPage;
+export default BrickPulsePage;

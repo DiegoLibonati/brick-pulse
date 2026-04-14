@@ -1,64 +1,120 @@
 import { Ball } from "@/core/ball";
 
-describe("Ball Class", () => {
-  it("should initialize with correct properties", () => {
-    const ball = new Ball(20, { x: 100, y: 50 }, { x: 2, y: 1 });
-
-    expect(ball.diameter).toBe(20);
-    expect(ball.position).toEqual({ x: 100, y: 50 });
-    expect(ball.direction).toEqual({ x: 2, y: 1 });
-  });
-
-  it("should create ball component", () => {
-    const ball = new Ball(20, { x: 100, y: 50 }, { x: 2, y: 1 });
-
-    const component = ball.create();
-    document.body.appendChild(component);
-
-    expect(component).toHaveClass("ball");
-    expect(component.style.left).toBe("100px");
-    expect(component.style.bottom).toBe("50px");
-
+describe("Ball", () => {
+  afterEach(() => {
     document.body.innerHTML = "";
   });
 
-  it("should move ball by direction", () => {
-    const ball = new Ball(20, { x: 100, y: 50 }, { x: 2, y: 1 });
+  describe("constructor", () => {
+    it("should initialize with given diameter, position and direction", () => {
+      const ball = new Ball(20, { x: 10, y: 20 }, { x: 2, y: 1 });
 
-    ball.move();
-
-    expect(ball.position).toEqual({ x: 102, y: 51 });
+      expect(ball.diameter).toBe(20);
+      expect(ball.position).toEqual({ x: 10, y: 20 });
+      expect(ball.direction).toEqual({ x: 2, y: 1 });
+    });
   });
 
-  it("should invert X direction", () => {
-    const ball = new Ball(20, { x: 100, y: 50 }, { x: 2, y: 1 });
+  describe("move", () => {
+    it("should update position by adding direction values", () => {
+      const ball = new Ball(20, { x: 10, y: 20 }, { x: 2, y: 1 });
 
-    ball.invertX();
+      ball.move();
 
-    expect(ball.direction).toEqual({ x: -2, y: 1 });
+      expect(ball.position).toEqual({ x: 12, y: 21 });
+    });
+
+    it("should accumulate position over multiple calls", () => {
+      const ball = new Ball(20, { x: 0, y: 0 }, { x: 3, y: 2 });
+
+      ball.move();
+      ball.move();
+
+      expect(ball.position).toEqual({ x: 6, y: 4 });
+    });
+
+    it("should move correctly with negative direction", () => {
+      const ball = new Ball(20, { x: 10, y: 10 }, { x: -2, y: -1 });
+
+      ball.move();
+
+      expect(ball.position).toEqual({ x: 8, y: 9 });
+    });
   });
 
-  it("should invert X direction when negative", () => {
-    const ball = new Ball(20, { x: 100, y: 50 }, { x: -2, y: -1 });
+  describe("invertX", () => {
+    it("should negate a positive direction.x", () => {
+      const ball = new Ball(20, { x: 0, y: 0 }, { x: 2, y: 1 });
 
-    ball.invertX();
+      ball.invertX();
 
-    expect(ball.direction).toEqual({ x: 2, y: -1 });
+      expect(ball.direction.x).toBe(-2);
+    });
+
+    it("should negate a negative direction.x back to positive", () => {
+      const ball = new Ball(20, { x: 0, y: 0 }, { x: -2, y: 1 });
+
+      ball.invertX();
+
+      expect(ball.direction.x).toBe(2);
+    });
+
+    it("should not affect direction.y", () => {
+      const ball = new Ball(20, { x: 0, y: 0 }, { x: 2, y: 5 });
+
+      ball.invertX();
+
+      expect(ball.direction.y).toBe(5);
+    });
   });
 
-  it("should invert Y direction", () => {
-    const ball = new Ball(20, { x: 100, y: 50 }, { x: 2, y: 1 });
+  describe("invertY", () => {
+    it("should negate a positive direction.y", () => {
+      const ball = new Ball(20, { x: 0, y: 0 }, { x: 2, y: 1 });
 
-    ball.invertY();
+      ball.invertY();
 
-    expect(ball.direction).toEqual({ x: 2, y: -1 });
+      expect(ball.direction.y).toBe(-1);
+    });
+
+    it("should negate a negative direction.y back to positive", () => {
+      const ball = new Ball(20, { x: 0, y: 0 }, { x: 2, y: -1 });
+
+      ball.invertY();
+
+      expect(ball.direction.y).toBe(1);
+    });
+
+    it("should not affect direction.x", () => {
+      const ball = new Ball(20, { x: 0, y: 0 }, { x: 3, y: 1 });
+
+      ball.invertY();
+
+      expect(ball.direction.x).toBe(3);
+    });
   });
 
-  it("should invert Y direction when negative", () => {
-    const ball = new Ball(20, { x: 100, y: 50 }, { x: -2, y: -1 });
+  describe("create", () => {
+    it("should return a div element with class ball", () => {
+      const ball = new Ball(20, { x: 50, y: 30 }, { x: 2, y: 1 });
+      const element = ball.create();
+      document.body.appendChild(element);
 
-    ball.invertY();
+      expect(element).toHaveClass("ball");
+    });
 
-    expect(ball.direction).toEqual({ x: -2, y: 1 });
+    it("should set left style from position.x", () => {
+      const ball = new Ball(20, { x: 50, y: 30 }, { x: 2, y: 1 });
+      const element = ball.create();
+
+      expect(element.style.left).toBe("50px");
+    });
+
+    it("should set bottom style from position.y", () => {
+      const ball = new Ball(20, { x: 50, y: 30 }, { x: 2, y: 1 });
+      const element = ball.create();
+
+      expect(element.style.bottom).toBe("30px");
+    });
   });
 });

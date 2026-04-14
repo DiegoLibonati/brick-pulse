@@ -1,7 +1,7 @@
 {
-  "name": "Breakout Game",
-  "short_name": "Breakout",
-  "description": "I made the game Breakout, in which we must use a platform to move to the sides to hit the ball and in this way the ball hits the blocks. Once we knock down all the blocks we win, if the ball hits the bottom we lose. The controls are the left and right arrows.",
+  "name": "BrickPulse",
+  "short_name": "BrickPulse",
+  "description": "BrickPulse is a browser-based implementation of the classic Breakout arcade game, built entirely with vanilla TypeScript and no production dependencies. The player controls a horizontal paddle at the bottom of the game board using the left and right arrow keys. A ball bounces continuously across the board, and the objective is to use the paddle to keep the ball in play while it collides with and destroys a grid of 18 blocks arranged in three rows at the top of the board.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
