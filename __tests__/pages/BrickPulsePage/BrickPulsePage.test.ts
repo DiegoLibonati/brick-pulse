@@ -29,7 +29,7 @@ describe("BrickPulsePage", () => {
     it("should render a main element with class brick-pulse-page", () => {
       renderPage();
 
-      expect(screen.getByRole("main", { name: "BrickPulse" })).toHaveClass(
+      expect(screen.getByRole("main", { name: "Brick Pulse" })).toHaveClass(
         "brick-pulse-page"
       );
     });

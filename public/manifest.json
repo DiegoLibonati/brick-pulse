@@ -1,7 +1,7 @@
 {
-  "name": "BrickPulse",
-  "short_name": "BrickPulse",
-  "description": "BrickPulse is a browser-based implementation of the classic Breakout arcade game, built entirely with vanilla TypeScript and no production dependencies. The player controls a horizontal paddle at the bottom of the game board using the left and right arrow keys. A ball bounces continuously across the board, and the objective is to use the paddle to keep the ball in play while it collides with and destroys a grid of 18 blocks arranged in three rows at the top of the board.",
+  "name": "Brick Pulse",
+  "short_name": "Brick Pulse",
+  "description": "Brick Pulse is a browser-based implementation of the classic Breakout arcade game, built entirely with vanilla TypeScript and no production dependencies.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

@@ -26,7 +26,7 @@ import "@/pages/BrickPulsePage/BrickPulsePage.css";
 const BrickPulsePage = (): Page => {
   const main = document.createElement("main") as Page;
   main.className = "brick-pulse-page";
-  main.setAttribute("aria-label", "BrickPulse");
+  main.setAttribute("aria-label", "Brick Pulse");
 
   main.innerHTML = `
     <section class="game" aria-label="Game area">
