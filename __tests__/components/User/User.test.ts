@@ -16,6 +16,7 @@ const renderComponent = (props: Partial<UserProps> = {}): UserComponent => {
 describe("User", () => {
   afterEach(() => {
     document.body.innerHTML = "";
+    jest.clearAllMocks();
   });
 
   describe("rendering", () => {

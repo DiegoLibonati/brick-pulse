@@ -1,13 +1,22 @@
+import type { Coords } from "@/types/app";
+
 import { Ball } from "@/core/ball";
+
+const createBall = (
+  diameter = 20,
+  position: Coords = { x: 0, y: 0 },
+  direction: Coords = { x: 2, y: 1 }
+): Ball => new Ball(diameter, { ...position }, { ...direction });
 
 describe("Ball", () => {
   afterEach(() => {
     document.body.innerHTML = "";
+    jest.clearAllMocks();
   });
 
   describe("constructor", () => {
     it("should initialize with given diameter, position and direction", () => {
-      const ball = new Ball(20, { x: 10, y: 20 }, { x: 2, y: 1 });
+      const ball = createBall(20, { x: 10, y: 20 }, { x: 2, y: 1 });
 
       expect(ball.diameter).toBe(20);
       expect(ball.position).toEqual({ x: 10, y: 20 });
@@ -17,7 +26,7 @@ describe("Ball", () => {
 
   describe("move", () => {
     it("should update position by adding direction values", () => {
-      const ball = new Ball(20, { x: 10, y: 20 }, { x: 2, y: 1 });
+      const ball = createBall(20, { x: 10, y: 20 }, { x: 2, y: 1 });
 
       ball.move();
 
@@ -25,7 +34,7 @@ describe("Ball", () => {
     });
 
     it("should accumulate position over multiple calls", () => {
-      const ball = new Ball(20, { x: 0, y: 0 }, { x: 3, y: 2 });
+      const ball = createBall(20, { x: 0, y: 0 }, { x: 3, y: 2 });
 
       ball.move();
       ball.move();
@@ -34,7 +43,7 @@ describe("Ball", () => {
     });
 
     it("should move correctly with negative direction", () => {
-      const ball = new Ball(20, { x: 10, y: 10 }, { x: -2, y: -1 });
+      const ball = createBall(20, { x: 10, y: 10 }, { x: -2, y: -1 });
 
       ball.move();
 
@@ -44,7 +53,7 @@ describe("Ball", () => {
 
   describe("invertX", () => {
     it("should negate a positive direction.x", () => {
-      const ball = new Ball(20, { x: 0, y: 0 }, { x: 2, y: 1 });
+      const ball = createBall();
 
       ball.invertX();
 
@@ -52,7 +61,7 @@ describe("Ball", () => {
     });
 
     it("should negate a negative direction.x back to positive", () => {
-      const ball = new Ball(20, { x: 0, y: 0 }, { x: -2, y: 1 });
+      const ball = createBall(20, { x: 0, y: 0 }, { x: -2, y: 1 });
 
       ball.invertX();
 
@@ -60,7 +69,7 @@ describe("Ball", () => {
     });
 
     it("should not affect direction.y", () => {
-      const ball = new Ball(20, { x: 0, y: 0 }, { x: 2, y: 5 });
+      const ball = createBall(20, { x: 0, y: 0 }, { x: 2, y: 5 });
 
       ball.invertX();
 
@@ -70,7 +79,7 @@ describe("Ball", () => {
 
   describe("invertY", () => {
     it("should negate a positive direction.y", () => {
-      const ball = new Ball(20, { x: 0, y: 0 }, { x: 2, y: 1 });
+      const ball = createBall();
 
       ball.invertY();
 
@@ -78,7 +87,7 @@ describe("Ball", () => {
     });
 
     it("should negate a negative direction.y back to positive", () => {
-      const ball = new Ball(20, { x: 0, y: 0 }, { x: 2, y: -1 });
+      const ball = createBall(20, { x: 0, y: 0 }, { x: 2, y: -1 });
 
       ball.invertY();
 
@@ -86,7 +95,7 @@ describe("Ball", () => {
     });
 
     it("should not affect direction.x", () => {
-      const ball = new Ball(20, { x: 0, y: 0 }, { x: 3, y: 1 });
+      const ball = createBall(20, { x: 0, y: 0 }, { x: 3, y: 1 });
 
       ball.invertY();
 
@@ -96,7 +105,7 @@ describe("Ball", () => {
 
   describe("create", () => {
     it("should return a div element with class ball", () => {
-      const ball = new Ball(20, { x: 50, y: 30 }, { x: 2, y: 1 });
+      const ball = createBall(20, { x: 50, y: 30 }, { x: 2, y: 1 });
       const element = ball.create();
       document.body.appendChild(element);
 
@@ -104,14 +113,14 @@ describe("Ball", () => {
     });
 
     it("should set left style from position.x", () => {
-      const ball = new Ball(20, { x: 50, y: 30 }, { x: 2, y: 1 });
+      const ball = createBall(20, { x: 50, y: 30 }, { x: 2, y: 1 });
       const element = ball.create();
 
       expect(element.style.left).toBe("50px");
     });
 
     it("should set bottom style from position.y", () => {
-      const ball = new Ball(20, { x: 50, y: 30 }, { x: 2, y: 1 });
+      const ball = createBall(20, { x: 50, y: 30 }, { x: 2, y: 1 });
       const element = ball.create();
 
       expect(element.style.bottom).toBe("30px");

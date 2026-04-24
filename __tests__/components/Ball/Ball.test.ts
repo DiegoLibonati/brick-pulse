@@ -16,6 +16,7 @@ const renderComponent = (props: Partial<BallProps> = {}): BallComponent => {
 describe("Ball", () => {
   afterEach(() => {
     document.body.innerHTML = "";
+    jest.clearAllMocks();
   });
 
   describe("rendering", () => {

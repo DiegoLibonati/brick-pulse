@@ -22,6 +22,7 @@ describe("BrickPulsePage", () => {
   afterEach(() => {
     page.cleanup?.();
     document.body.innerHTML = "";
+    jest.clearAllMocks();
     jest.useRealTimers();
   });
 

@@ -16,6 +16,7 @@ const renderComponent = (props: Partial<BlockProps> = {}): BlockComponent => {
 describe("Block", () => {
   afterEach(() => {
     document.body.innerHTML = "";
+    jest.clearAllMocks();
   });
 
   describe("rendering", () => {
